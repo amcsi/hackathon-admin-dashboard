@@ -10,15 +10,23 @@
 </template>
 
 <script>
-  /* global fetch:false */
-
   /* eslint no-console:0 */
   import ToiletSection from './components/ToiletSection';
-
-  const apiBaseUrl = 'http://10.100.10.112:8080';
+  import toiletsService from './api/toilets';
   const headers = new Headers({
   });
-  const gender = 'men';
+
+  /**
+   * Call a callback right now and also every n milliseconds.
+   *
+   * @param cb
+   * @param delay
+   * @return {*|number}
+   */
+  function nowAndEvery(delay, cb) {
+    cb();
+    return setInterval(cb, delay);
+  }
 
   export default {
     name: 'app',
@@ -31,25 +39,8 @@
       };
     },
     created() {
-      fetch(`${apiBaseUrl}/toilets`, {
-        method: 'OPTIONS',
-      }).then((response) => {
-        fetch(`${apiBaseUrl}/toilets`, {
-          headers,
-          mode: 'cors',
-        }).then((response) => {
-          return response.json();
-        }).then((responseBody) => {
-          const toilets = [];
-          for (let key in responseBody[gender]) {
-            let urinal = false;
-            if (key.charAt(0) === 'u') {
-              urinal = true;
-            }
-            toilets.push({urinal, available: !!responseBody[gender][key]})
-          }
-          this.toilets = toilets;
-        });
+      nowAndEvery(5000, () => {
+        toiletsService().then(toilets => this.toilets = toilets);
       });
     },
   };
