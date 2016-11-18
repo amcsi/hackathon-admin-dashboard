@@ -6,7 +6,7 @@
     <div class="section-content">
       <div class="toilet-list">
         <div class="toilet" :class="{'toilet__urinal': toilet.urinal}" v-for="toilet in toilets">
-          <div class="toilet-availability toilet-availability__on"></div>
+          <div class="toilet-availability" :class="{'toilet-availability__on': toilet.available}"></div>
         </div>
       </div>
     </div>
@@ -71,13 +71,10 @@
     width: 20px;
     height: 20px;
     border-radius: 10px;
+    background-color: #d0021b;
   }
 
   .toilet-availability__on {
     background-color: #7ed321;
-  }
-
-  .toilet-availability__off {
-    background-color: #d0021b;
   }
 </style>
