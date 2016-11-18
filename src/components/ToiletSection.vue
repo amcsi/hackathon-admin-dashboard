@@ -5,18 +5,8 @@
     </div>
     <div class="section-content">
       <div class="toilet-list">
-        <div class="toilet">
+        <div class="toilet" :class="{'toilet__urinal': toilet.urinal}" v-for="toilet in toilets">
           <div class="toilet-availability toilet-availability__on"></div>
-        </div>
-        <div class="toilet">
-          <div class="toilet-availability toilet-availability__on"></div>
-
-        </div>
-        <div class="toilet toilet__urinal">
-          <div class="toilet-availability toilet-availability__off"></div>
-        </div>
-        <div class="toilet toilet__urinal">
-          <div class="toilet-availability toilet-availability__off"></div>
         </div>
       </div>
     </div>
@@ -25,6 +15,9 @@
 <script>
   /** @class ToiletSection */
   export default {
+    props: {
+      toilets: Array
+    },
     data() {
       return {
         msg: 'hello vue',
