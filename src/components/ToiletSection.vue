@@ -1,18 +1,14 @@
 <template>
-  <section class="section">
-    <div class="section-title">
-      TOILETS
-    </div>
-    <div class="section-content">
-      <div class="toilet-list">
-        <div class="toilet" :class="{'toilet__urinal': toilet.urinal}" v-for="toilet in toilets">
-          <div class="toilet-availability" :class="{'toilet-availability__on': toilet.available}"></div>
-        </div>
+  <titled-section :title="'TOILETS'">
+    <div class="toilet-list">
+      <div class="toilet" :class="{'toilet__urinal': toilet.urinal}" v-for="toilet in toilets">
+        <div class="toilet-availability" :class="{'toilet-availability__on': toilet.available}"></div>
       </div>
     </div>
-  </section>
+  </titled-section>
 </template>
 <script>
+  import TitledSection from './TitledSection';
   /** @class ToiletSection */
   export default {
     props: {
@@ -24,27 +20,10 @@
       };
     },
 
-    components: {},
+    components: { TitledSection },
   };
 </script>
 <style>
-  .section {
-    display: flex;
-  }
-
-  .section-title {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex: 1;
-    font-size: 30px;
-    color: #0091de;
-  }
-
-  .section-content {
-    flex: 2;
-  }
-
   .toilet-list {
     display: flex;
     flex-direction: row;
