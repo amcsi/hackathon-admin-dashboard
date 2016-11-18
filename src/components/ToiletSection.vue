@@ -1,15 +1,90 @@
 <template>
-  <div>this is template body</div>
+  <section class="section">
+    <div class="section-title">
+      TOILETS
+    </div>
+    <div class="section-content">
+      <div class="toilet-list">
+        <div class="toilet">
+          <div class="toilet-availability toilet-availability__on"></div>
+        </div>
+        <div class="toilet">
+          <div class="toilet-availability toilet-availability__on"></div>
+
+        </div>
+        <div class="toilet toilet__urinal">
+          <div class="toilet-availability toilet-availability__off"></div>
+        </div>
+        <div class="toilet toilet__urinal">
+          <div class="toilet-availability toilet-availability__off"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <script>
   /** @class ToiletSection */
   export default {
     data() {
       return {
-        msg: 'hello vue'
-      }
+        msg: 'hello vue',
+      };
     },
-    components: {}
-  }
+
+    components: {},
+  };
 </script>
-<style></style>
+<style>
+  .section {
+    display: flex;
+  }
+
+  .section-title {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    font-size: 30px;
+    color: #0091de;
+  }
+
+  .section-content {
+    flex: 2;
+  }
+
+  .toilet-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .toilet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 110px;
+    width: 100px;
+    background-image: url(../assets/noun_12853_cc.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .toilet__urinal {
+    background-image: url(../assets/noun_138361_cc.png);
+  }
+
+
+  .toilet-availability {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .toilet-availability__on {
+    background-color: #7ed321;
+  }
+
+  .toilet-availability__off {
+    background-color: #d0021b;
+  }
+</style>

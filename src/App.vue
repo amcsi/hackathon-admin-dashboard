@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <header>
+      DASHBOARD
+    </header>
+    <div style="height: 100px"></div>
+
+    <toilet-section></toilet-section>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello';
+  import ToiletSection from './components/ToiletSection';
 
-export default {
-  name: 'app',
-  components: {
-    Hello,
-  },
-};
+  export default {
+    name: 'app',
+    components: {
+      ToiletSection,
+    },
+  };
 </script>
 
 <style>
@@ -23,6 +27,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+  header {
+    display: flex;
+    height: 92px;
+    background-color: #0091de;
+    color: white;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section {
+    height: 110px;
+  }
 </style>
