@@ -6,13 +6,17 @@
     <div style="height: 100px"></div>
 
     <toilet-section :toilets="toilets"></toilet-section>
+    <kitchen-section :kitchen="kitchen" :coffee="coffee" :milk="milk"></kitchen-section>
   </div>
 </template>
 
 <script>
   /* eslint no-console:0 */
   import ToiletSection from './components/ToiletSection';
+  import KitchenSection from './components/KitchenSection';
   import toiletsService from './api/toilets';
+  import kitchenService from './api/kitchen';
+
   const headers = new Headers({
   });
 
@@ -32,15 +36,22 @@
     name: 'app',
     components: {
       ToiletSection,
+      KitchenSection,
     },
     data() {
       return {
         toilets: [],
+        kitchen: {
+          microwaves: [true, true, true],
+          coffee: 0.1,
+          milk: 0.1,
+        },
       };
     },
     created() {
       nowAndEvery(5000, () => {
         toiletsService().then(toilets => this.toilets = toilets);
+        kitchenService().then(kitchen => this.kitchen = kitchen);
       });
     },
   };
